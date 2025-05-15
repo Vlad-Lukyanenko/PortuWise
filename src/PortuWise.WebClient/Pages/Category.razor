@@ -1,0 +1,17 @@
+﻿@page "/category/{categoryId:guid}"
+
+<div class="row g-4">
+    @foreach (var c in _subCategories)
+    {        
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100">
+                <img src="@c.ImagePath" class="card-img-top" alt="Example Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">@c.Title</h5>
+                    <p class="card-text">@c.Description</p>
+                    <a href="/category/@c.ParentId/subcategory/@c.Id/lesson">Open</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

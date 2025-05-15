@@ -1,0 +1,35 @@
+﻿@page "/category/{categoryId:guid}/subcategory/{subcategoryId:guid}/lesson"
+
+<div class="row g-4">
+    @if (_wordsResponse is not null)
+    {
+        @foreach (var w in _wordsResponse.Words)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="@w.ImagePath" class="card-img-top" alt="Example Image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold mt-0">@w.Pt</h5>
+                        <p class="card-title">@w.PtTranscription</p>
+
+                        <h5 class="card-title fw-bold mt-4">@w.Eng</h5>
+                        <p class="card-title">@w.EngTranscription</p>
+
+                        <h5 class="card-title fw-bold mt-4">@w.Rus</h5>
+
+                        <a href="/category/@_wordsResponse.ParentCategoryId/subcategory/@w.CategoryId/lesson/words/@w.Id">Open</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<br />
+
+@if (_lessonResponse is not null)
+{
+    <span>
+        @((MarkupString)_lessonResponse.LessonHtml)
+    </span>
+}
