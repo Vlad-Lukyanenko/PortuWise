@@ -21,6 +21,10 @@ namespace PortuWise.WebClient.Pages
         private GetLessonResponse? _lessonResponse = null;
         private GetWordsResponse? _wordsResponse = null;
 
+        private RenderFragment _htmlContent => builder =>
+        {
+            builder.AddMarkupContent(0, _lessonResponse.LessonHtml ?? "");
+        };
 
         protected override async Task OnInitializedAsync()
         {

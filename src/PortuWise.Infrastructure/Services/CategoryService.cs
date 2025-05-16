@@ -8,14 +8,11 @@ namespace PortuWise.WebApi.Services
 {
     public class CategoryService : ICategoryService
     {
-
         private PortuWiseDbContext _dbContext;
 
         public CategoryService(PortuWiseDbContext dbContext)
         {
             _dbContext = dbContext;
-
-
         }
 
         public async Task<GetCategoryResponse?> GetCategoryByIdAsync(Guid categoryId)

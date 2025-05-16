@@ -4,8 +4,8 @@ namespace PortuWise.Application.Services
 {
     public interface IWordService
     {
-        List<Word> GetWords(Guid categoryId);
+        Task<List<Word>> GetWords(Guid categoryId);
 
-        Word GetWord(Guid wordId);
+        Task<Word> GetWord(Guid wordId);
     }
 }

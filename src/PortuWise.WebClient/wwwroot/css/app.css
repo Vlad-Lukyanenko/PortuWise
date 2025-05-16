@@ -1,4 +1,4 @@
-html, body {
+﻿html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: aliceblue;
     height: 100%;
@@ -128,3 +128,9 @@ code {
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
+
+.nav-link.active {
+    color: #2a5eb5 !important;
+    font-weight: bold;
+    /*border-bottom: 2px solid #2a5eb5;*/
+}

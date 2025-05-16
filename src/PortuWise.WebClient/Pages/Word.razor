@@ -1,65 +1,85 @@
-﻿@page "/category/{categoryId:guid}/subcategory/{subcategoryId:guid}/lesson/words/{wordId:guid}"
-
+﻿@page "/learn/category/{categoryId:guid}/subcategory/{subcategoryId:guid}/lesson/words/{wordId:guid}"
 
 @if (_wordResponse is not null)
 {
-    <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/learn">Уроки</a></li>
-            <li class="breadcrumb-item"><a href="/category/@_wordResponse.ParentCategoryId">@_wordResponse.ParentCategoryTitle</a></li>
-            <li class="breadcrumb-item"><a href="/category/@_wordResponse.ParentCategoryId/subcategory/@_wordResponse.CategoryId/lesson">@_wordResponse.CategoryTitle</a></li>
+    <nav class="mb-5" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/learn">Уроки</a></li>
+            <li class="breadcrumb-item"><a href="/learn/category/@_wordResponse.ParentCategoryId">@_wordResponse.ParentCategoryTitle</a></li>
+            <li class="breadcrumb-item"><a href="/learn/category/@_wordResponse.ParentCategoryId/subcategory/@_wordResponse.CategoryId/lesson">@_wordResponse.CategoryTitle</a></li>
             <li class="breadcrumb-item">@_wordResponse.Word.Pt</li>
-            </ol>
-        </nav>
+        </ol>
+    </nav>
+
     <div class="container">
         <div class="row g-4 justify-content-center">
             <!-- Одна пара: слово + примеры -->
             <div class="col-12 d-flex flex-wrap justify-content-center">
                 <!-- Левая колонка: карточка со словом -->
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="card h-100" style="width: 100%;">
-                        <img src="@_wordResponse.Word.ImagePath" class="card-img-top" alt="Example Image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold mt-0">@_wordResponse.Word.Pt</h5>
-                            <p class="card-title">@_wordResponse.Word.PtTranscription</p>
-
-                            <h5 class="card-title fw-bold mt-4">@_wordResponse.Word.Eng</h5>
-                            <p class="card-title">@_wordResponse.Word.EngTranscription</p>
-
-                            <h5 class="card-title fw-bold mt-4">@_wordResponse.Word.Rus</h5>
-                        </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 me-2" style="width: 20%;">
+                    <div class="card h-100" style="width: 100%; padding: 2em">
+                        <img src="@_wordResponse.Word.ImagePath" class="card-img-top" style="width: 150px; margin: auto;" alt="Example Image">
                     </div>
                 </div>
-
                 <!-- Правая колонка: примеры -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="card h-100" style="width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold mb-3">Examples</h5>
+                        <div class="card-body text-center mt-2">
 
-                            @if (_wordResponse.Phrases is not null)
-                            {
-                                @foreach (var p in _wordResponse.Phrases)
-                                {
-                                    <div class="mb-4">
-                                        <h5 class="fw-bold">Pt:</h5>
-                                        <p class="fw-bold mb-0">@p.Pt</p>
-                                        <p class="mt-1">@p.PtTranscription</p>
+                            <!-- Португальский -->
+                            <div class="mb-3">
+                                <h2 class="fw-bold display-7 d-inline">@_wordResponse.Word.Pt</h2>
+                                <p class="text-muted mb-0">@_wordResponse.Word.PtTranscription</p>
+                            </div>
 
-                                        <h5 class="fw-bold">Eng:</h5>
-                                        <p class="fw-bold mb-0">@p.Eng</p>
-                                        <p class="mt-1">@p.EngTranscription</p>
+                            <!-- Английский -->
+                            <div class="mb-3">
+                                <h5 class="fw-bold mb-1">@_wordResponse.Word.Eng</h5>
+                                <p class="text-muted mb-0">@_wordResponse.Word.EngTranscription</p>
+                            </div>
 
-                                        <h5 class="fw-bold">Ru:</h5>
-                                        <p class="fw-bold">@p.Rus</p>
-                                        <hr />
-                                    </div>
-                                }
-                            }
+                            <!-- Русский -->
+                            <div>
+                                <h5 class="fw-bold">@_wordResponse.Word.Rus</h5>
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="container mt-4" style="width: 90%;">
+        @if (_wordResponse.Phrases is not null)
+        {
+            @foreach (var p in _wordResponse.Phrases)
+            {
+                <div style="background-color: #FFF; margin-bottom: 1em; padding: 0.6em 2em; padding-bottom: 0; border-radius: 0.4em;">
+                    <div class="d-grid" style="grid-template-columns: repeat(3, 1fr);">
+                        <!-- Португальский -->
+                        <div>
+                            <h6 class="fw-bold" style="color: #858585;">pt:</h6>
+                            <p class="fw-bold mb-0">@p.Pt</p>
+                            <p class="mt-1">@p.PtTranscription</p>
+                        </div>
+
+                        <!-- Английский -->
+                        <div>
+                            <h6 class="fw-bold" style="color: #858585;">eng:</h6>
+                            <p class="fw-bold mb-0">@p.Eng</p>
+                            <p class="mt-1">@p.EngTranscription</p>
+                        </div>
+
+                        <!-- Русский -->
+                        <div>
+                            <h6 class="fw-bold" style="color: #858585;">ru:</h6>
+                            <p class="fw-bold">@p.Rus</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
     </div>
 }

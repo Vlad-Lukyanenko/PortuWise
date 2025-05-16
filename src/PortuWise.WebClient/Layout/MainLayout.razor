@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Routing
 
 <div class="d-flex flex-column min-vh-100">
 
@@ -14,15 +15,24 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 1.2em">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 1.1em">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" style="color: #2a5eb5;">Главная</a>
+                            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                                Главная
+                            </NavLink>
+                            @* <a class="nav-link active" aria-current="page" href="#" style="color: #2a5eb5;">Главная</a> *@
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/learn" style="color: #2a5eb5;">Уроки</a>
+                            <NavLink class="nav-link" href="/learn">
+                                Уроки
+                            </NavLink>
+                            @* <a class="nav-link" Match="NavLinkMatch.learn" href="/learn" style="color: #2a5eb5;">Уроки</a> *@
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about" style="color: #2a5eb5;">Справка</a>
+                            <NavLink class="nav-link" href="/about">
+                                Справка
+                            </NavLink>
+                            @* <a class="nav-link" Match="NavLinkMatch.about" href="/about" style="color: #2a5eb5;">Справка</a> *@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">

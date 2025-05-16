@@ -25,7 +25,7 @@ namespace PortuWise.WebApi.Controllers
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> GetAll(Guid categoryId)
         {
-            var words = _wordService.GetWords(categoryId);
+            var words = await _wordService.GetWords(categoryId);
             var category = await _categoryService.GetCategoryByIdAsync(categoryId);
 
 
@@ -44,7 +44,7 @@ namespace PortuWise.WebApi.Controllers
         [HttpGet("words/{wordId}")]
         public async Task<IActionResult> Get(Guid wordId)
         {
-            var word = _wordService.GetWord(wordId);
+            var word = await _wordService.GetWord(wordId);
             var category = await _categoryService.GetCategoryByIdAsync(word.CategoryId);
             var phrases = _phraseService.GetPhrases(wordId);
 

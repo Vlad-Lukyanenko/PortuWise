@@ -1,4 +1,4 @@
-﻿@page "/category/{categoryId:guid}"
+﻿@page "/learn/category/{categoryId:guid}"
 
 @if (_subCategories != null && _subCategories.Any())
 {
@@ -20,7 +20,7 @@
 
                         <!-- Обертка с mt-auto, чтобы прижать кнопку вниз -->
                         <div class="mt-auto d-flex justify-content-center">
-                            <a class="btn btn-outline-success ps-4 pe-4" href="/category/@c.ParentId/subcategory/@c.Id/lesson">Открыть</a>
+                            <a class="btn btn-outline-success ps-4 pe-4" href="/learn/category/@c.ParentId/subcategory/@c.Id/lesson">Открыть</a>
                         </div>
                     </div>
                 </div>
