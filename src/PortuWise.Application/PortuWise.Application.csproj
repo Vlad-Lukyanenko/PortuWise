@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PortuWise.Contracts\PortuWise.Contracts.csproj" />
     <ProjectReference Include="..\PortuWise.Domain\PortuWise.Domain.csproj" />
   </ItemGroup>
 

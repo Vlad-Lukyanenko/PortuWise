@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PortuWise.WebApi.Domain.Entities;
-using System;
 
 namespace PortuWise.DataAccess
 {
@@ -18,7 +17,11 @@ namespace PortuWise.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.Entity<Category>()
+                .HasOne(c => c.Parent)
+                .WithMany()
+                .HasForeignKey(c => c.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace PortuWise.WebClient.Domain
+﻿namespace PortuWise.Contracts.Responses
 {
-    public class Category
+    public class GetCategoryResponse
     {
         public Guid Id { get; set; }
         public Guid? ParentId { get; set; }

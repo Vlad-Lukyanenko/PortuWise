@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PortuWise.DataAccess;
@@ -11,9 +12,11 @@ using PortuWise.DataAccess;
 namespace PortuWise.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(PortuWiseDbContext))]
-    partial class PortuWiseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250516170458_UpdatedCategory")]
+    partial class UpdatedCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,6 +3,14 @@
 
 @if (_wordResponse is not null)
 {
+    <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/learn">Уроки</a></li>
+            <li class="breadcrumb-item"><a href="/category/@_wordResponse.ParentCategoryId">@_wordResponse.ParentCategoryTitle</a></li>
+            <li class="breadcrumb-item"><a href="/category/@_wordResponse.ParentCategoryId/subcategory/@_wordResponse.CategoryId/lesson">@_wordResponse.CategoryTitle</a></li>
+            <li class="breadcrumb-item">@_wordResponse.Word.Pt</li>
+            </ol>
+        </nav>
     <div class="container">
         <div class="row g-4 justify-content-center">
             <!-- Одна пара: слово + примеры -->

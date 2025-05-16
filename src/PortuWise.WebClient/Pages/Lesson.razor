@@ -3,6 +3,14 @@
 <div class="row g-4">
     @if (_wordsResponse is not null)
     {
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/learn">Уроки</a></li>
+                <li class="breadcrumb-item"><a href="/category/@_wordsResponse.ParentCategoryId">@_wordsResponse.ParentCategoryTitle</a></li>
+                <li class="breadcrumb-item">@_wordsResponse.CategoryTitle</li>
+            </ol>
+        </nav>
+
         @foreach (var w in _wordsResponse.Words)
         {
             <div class="col-sm-6 col-md-4 col-lg-3">

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PortuWise.Application\PortuWise.Application.csproj" />
+    <ProjectReference Include="..\PortuWise.Contracts\PortuWise.Contracts.csproj" />
     <ProjectReference Include="..\PortuWise.Domain\PortuWise.Domain.csproj" />
     <ProjectReference Include="..\PortuWise.Infrastructure.Persistence\PortuWise.Infrastructure.Persistence.csproj" />
   </ItemGroup>

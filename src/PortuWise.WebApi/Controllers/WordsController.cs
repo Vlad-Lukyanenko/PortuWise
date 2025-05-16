@@ -26,16 +26,17 @@ namespace PortuWise.WebApi.Controllers
         public async Task<IActionResult> GetAll(Guid categoryId)
         {
             var words = _wordService.GetWords(categoryId);
-            var parentCategory = await _categoryService.GetCategoryByIdAsync(categoryId);
+            var category = await _categoryService.GetCategoryByIdAsync(categoryId);
+
 
             var response = new GetWordsResponse()
             {
                 CategoryId = categoryId,
-                ParentCategoryId = parentCategory!.Id,
+                CategoryTitle = category.Title,
+                ParentCategoryId = category!.ParentId!.Value,
+                ParentCategoryTitle = category.ParentTitle,
                 Words = words
             };
-
-            await Task.Delay(10);
 
             return Ok(response);
         }
@@ -44,12 +45,15 @@ namespace PortuWise.WebApi.Controllers
         public async Task<IActionResult> Get(Guid wordId)
         {
             var word = _wordService.GetWord(wordId);
+            var category = await _categoryService.GetCategoryByIdAsync(word.CategoryId);
             var phrases = _phraseService.GetPhrases(wordId);
-
-            await Task.Delay(10);
 
             var response = new GetWordResponse()
             {
+                CategoryId = category.Id,
+                CategoryTitle = category.Title,
+                ParentCategoryId = category!.ParentId!.Value,
+                ParentCategoryTitle = category.ParentTitle,
                 Word = word,
                 Phrases = phrases
             };
