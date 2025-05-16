@@ -69,7 +69,7 @@ namespace PortuWise.WebApi.Services
 
         public async Task<List<Word>> GetWords(Guid categoryId)
         {
-            var words = await _dbContext.Words.OrderBy(c => c.CreatedAt).ToListAsync();
+            var words = await _dbContext.Words.Where(c => c.CategoryId == categoryId).OrderBy(c => c.CreatedAt).ToListAsync();
 
             return words;
         }
