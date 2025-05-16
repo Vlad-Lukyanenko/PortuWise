@@ -1,7 +1,95 @@
 ﻿@page "/about"
 
-<h3>About</h3>
+<h2 style="width: 100%; text-align: center; margin-bottom: 0em;">О проекте</h2>
 
-@code {
+<section class="py-5">
+    <div class="container text-center px-4">
+        <div class="mb-4">
+            <div class="d-inline-block p-3 bg-success bg-opacity-10 rounded-circle mb-3">
+                <img src="./icons/startup.png" style="width: 64px;" />
+            </div>
+            <h2 class="fw-bold">Как всё началось</h2>
+        </div>
 
-}
+        <p class="fs-5 text-muted" style="max-width: 820px; margin: auto;">
+            PortuWise родился не в офисе, а в голове человека, который сам однажды оказался в Португалии
+            и внезапно понял, что <span class="fst-italic">"bom dia"</span> — это всё, что он может уверенно сказать на португальском.
+            <br /><br />
+            Мы устали от скучных приложений, унылых правил и "курсов с гарантией". Захотелось чего-то живого.
+            Так появился PortuWise — платформа, где язык не учат, а <span class="fw-semibold text-success">вживаются в него</span>.
+            С любовью, иронией и вниманием к тем, кто только начинает.
+        </p>
+    </div>
+</section>
+
+
+
+<br/>
+
+<section class="py-5" style="border-radius: 0.4em;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Почему именно PortuWise?</h2>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded p-4 h-100">
+                    <h5 class="fw-bold mb-3">🇵🇹 Европейский португальский</h5>
+                    <p class="text-muted" style="font-size: 1.1em;">
+                        Никакой Бразилии — только живой язык Португалии: такой, как ты слышишь его на улицах, в кафе и от соседей по лестничной клетке.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded p-4 h-100">
+                    <h5 class="fw-bold mb-3">💬 Перевод на два языка</h5>
+                    <p class="text-muted" style="font-size: 1.1em;">
+                        Все слова и фразы даны с переводом на русский и английский. Удобно для тех, кто думает сразу на двух языках (и иногда — ни на одном).
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="border rounded p-4 h-100">
+                    <h5 class="fw-bold mb-3">🎯 Минимум правил — максимум пользы</h5>
+                    <p class="text-muted" style="font-size: 1.1em;">
+                        Без занудства и грамматических мучений. Мы даём только то, что реально нужно, чтобы *сказать, понять и не выглядеть потерянным*.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-3 bg-light mb-5" style="border-radius: 0.8em;">
+    <div class="container" style="max-width: 700px;">
+        <div class="text-center mb-4">
+            <div class="d-inline-block p-3 bg-primary bg-opacity-10 rounded-circle mb-3">
+                <img src="./icons/email.png" style="width: 64px;" />
+            </div>
+            <h2 class="fw-bold">Связаться с нами</h2>
+            <p class="text-muted fs-5">Есть идея, предложение или просто хочется сказать "обригадо"? Напиши нам!</p>
+        </div>
+
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Имя</label>
+                <input type="text" class="form-control" id="name" placeholder="Как тебя зовут?">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="example@email.com">
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label fw-semibold">Сообщение</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Пиши, не стесняйся :)"></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-5 py-2 fw-bold">
+                    Отправить
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -129,11 +129,28 @@ code {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
+.nav-link {
+    color: #2a5eb5 !important;
+}
+
 .nav-link.active {
     color: #2a5eb5 !important;
     font-weight: bold;
     /*border-bottom: 2px solid #2a5eb5;*/
 }
+
+.btn-outline-info {
+    color: #2a5eb5;
+    border-color: #2a5eb5;
+}
+
+    .btn-outline-info:hover,
+    .btn-outline-info:focus,
+    .btn-outline-info:active {
+        background-color: #2a5eb5;
+        color: #fff;
+        border-color: #2a5eb5;
+    }
 
 @media (max-width: 576px) {
     .carousel-control-prev,

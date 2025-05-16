@@ -20,19 +20,16 @@
                             <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
                                 Главная
                             </NavLink>
-                            @* <a class="nav-link active" aria-current="page" href="#" style="color: #2a5eb5;">Главная</a> *@
                         </li>
                         <li class="nav-item">
                             <NavLink class="nav-link" href="/learn">
                                 Уроки
                             </NavLink>
-                            @* <a class="nav-link" Match="NavLinkMatch.learn" href="/learn" style="color: #2a5eb5;">Уроки</a> *@
                         </li>
                         <li class="nav-item">
                             <NavLink class="nav-link" href="/about">
-                                Справка
+                                О проекте
                             </NavLink>
-                            @* <a class="nav-link" Match="NavLinkMatch.about" href="/about" style="color: #2a5eb5;">Справка</a> *@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -52,10 +49,22 @@
     <!-- Футер -->
     <footer class="py-3 bg-light">
         <div class="container text-center">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3" style="font-size: 1.3em;">
-                <li class="nav-item"><a href="/" class="nav-link px-2" style="color: #2a5eb5;">Главная</a></li>
-                <li class="nav-item"><a href="/learn" class="nav-link px-2" style="color: #2a5eb5;">Уроки</a></li>
-                <li class="nav-item"><a href="/about" class="nav-link px-2" style="color: #2a5eb5;">Справка</a></li>
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3" style="font-size: 1.1em;">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                        Главная
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/learn">
+                        Уроки
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="/about">
+                        О проекте
+                    </NavLink>
+                </li>
             </ul>
             <p class="text-body-secondary">© 2025 PortuWise, Inc</p>
         </div>
