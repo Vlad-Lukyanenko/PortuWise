@@ -158,3 +158,12 @@ code {
         display: none;
     }
 }
+
+.rounded {
+    border-radius: 0.6em !important;
+}
+
+.rounded-top {
+    border-top-left-radius: 0.6em !important;
+    border-top-right-radius: 0.6em !important;
+}
