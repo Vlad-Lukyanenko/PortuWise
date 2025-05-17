@@ -6,7 +6,8 @@
 
 <PageTitle>PortuWise - main page</PageTitle>
 
-<div class="row">
+
+<div class="row mb-5">
     <section class="jumbotron text-center"
              style="
                 background-color: #f7f7f7;
@@ -38,7 +39,7 @@
     </section>
 </div>
 
-<section class="py-5">
+<section class="mb-5">
     <div class="container">
         <div class="text-center mb-4">
             <h2 class="fw-bold">Как это работает?</h2>
@@ -90,100 +91,98 @@
     </div>
 </section>
 
-<section class="py-3 bg-white" style="border-radius: 0.4em;">
+<section class="mb-5" style="background-color: #FFF; border-radius: 0.8em; padding-bottom: 1.2em; padding-top: 1.8em;">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">🎁 Получи бесплатную книгу!</h2>
+        <p class="text-muted mb-0 fs-5">
+            Введи свою почту и получи нашу мини-книгу «Португальский без паники» в формате PDF.
+        </p>
+        <p class="text-muted mb-4 fs-5">
+            Полезные фразы, живой язык, никакой скуки.
+        </p>
+
+        <div class="row justify-content-center g-2 mb-2" style="max-width: 500px; margin: auto;">
+            <img src="./images/books.jpg" style="border-radius: 0.6em;" />
+        </div>
+        
+
+        <form class="row justify-content-center g-2" style="max-width: 500px; margin: auto;">
+            <div>
+                <input type="email" class="form-control form-control-lg"
+                       placeholder="Твой email, например: joao@mail.com" required />
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-success btn-lg w-65 fw-bold">
+                    Получить книгу
+                </button>
+            </div>
+        </form>
+
+        <p class="text-muted mt-3" style="font-size: 0.9em;">
+            Мы не шлем спам. Только португальский и вдохновение 🇵🇹
+        </p>
+    </div>
+</section>
+
+<section class="mb-5" style="border-radius: 0.4em;">
     <div class="container">
         <div class="text-center mb-4">
-            <h2 class="fw-bold">Кому это подойдёт?</h2>
+            <h2 class="fw-bold">Кому подойдёт PortuWise?</h2>
             <p class="text-muted fs-5">
-                PortuWise создан для всех, кто хочет учить португальский без боли и скуки.
+                Мы подстроились под реальных людей и их ситуации.
             </p>
         </div>
 
-        <div id="audienceCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
-
-            <div class="carousel-inner">
-
-                <!-- Слайд 1 -->
-                <div class="carousel-item active">
-                    <div class="d-flex justify-content-center">
-                        <div class="p-4 border rounded text-center mx-4" style="max-width: 700px;">
-                            <div style="font-size: 3em;">🧳</div>
-                            <h5 class="mt-3">Новоприбывшим и только собирающимся</h5>
-                            <p class="text-muted">
-                                Только приехал в Португалию? С PortuWise ты освоишь базовые фразы, поймёшь надписи на улицах, меню в кафе и сможешь уверенно сказать «обригадо». Никаких скучных учебников — только живой язык.
-                            </p>
-                        </div>
-                    </div>
+        <div class="row g-4">
+            <!-- Карточка 1 -->
+            <div class="col-md-6">
+                <div class="p-4 border rounded text-center h-100 bg-white">
+                    <img src="./images/suitcase.png" style="width: 250px;" />
+                    <h5 class="mt-3 fw-bold mb-3">Новоприбывшим</h5>
+                    <p class="text-muted" style="font-size: 1.2em;">
+                        Только приехал в Португалию? С PortuWise ты освоишь базовые фразы, поймёшь надписи на улицах, меню в кафе и сможешь уверенно сказать «обригадо». Никаких скучных учебников — только живой язык.
+                    </p>
                 </div>
-
-                <!-- Слайд 2 -->
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <div class="p-4 border rounded text-center mx-4" style="max-width: 700px;">
-                            <div style="font-size: 3em;">💻</div>
-                            <h5 class="mt-3">IT-специалистам и фрилансерам</h5>
-                            <p class="text-muted">
-                                Работай в Португалии комфортно — переписывайся с заказчиками, решай бытовые вопросы и не теряйся в разговоре на митинге. А ещё сможешь флиртовать в кафешке — да-да, тоже на португальском 😉
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Слайд 3 -->
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <div class="p-4 border rounded text-center mx-4" style="max-width: 700px;">
-                            <div style="font-size: 3em;">👨‍👩‍👧</div>
-                            <h5 class="mt-3">Семьям с детьми</h5>
-                            <p class="text-muted">
-                                Хочешь, чтобы твои дети не чувствовали себя чужими в школе и на площадке? А ты сам понимал, что говорит педиатр? PortuWise поможет адаптироваться всей семье — мягко, весело и эффективно.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Слайд 4 -->
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <div class="p-4 border rounded text-center mx-4" style="max-width: 700px;">
-                            <div style="font-size: 3em;">🎓</div>
-                            <h5 class="mt-3">Студентам и любителям языков</h5>
-                            <p class="text-muted">
-                                Если ты просто кайфуешь от языков или планируешь учёбу в Португалии — ты наш человек. PortuWise поможет быстро заговорить и получать удовольствие от процесса. Учёба будет не напряг, а фан!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Слайд 5 -->
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <div class="p-4 border rounded text-center" style="max-width: 500px;">
-                            <div style="font-size: 3em;">✈️</div>
-                            <h5 class="mt-3">Путешественникам и туристам</h5>
-                            <p class="text-muted">
-                                Отпуск в Португалии? PortuWise научит быстро заказывать пастел-де-ната, ловко находить дорогу и не теряться в аэропорту. Улыбки португальцев — в комплекте!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Кнопки навигации -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#audienceCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Назад</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#audienceCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Вперёд</span>
-            </button>
+            <!-- Карточка 2 -->
+            <div class="col-md-6">
+                <div class="p-4 border rounded text-center h-100 bg-white">
+                    <img src="./images/freelancer.png" style="width: 330px;" />
+                    <h5 class="mt-3 fw-bold mb-3">IT-специалистам и фрилансерам</h5>
+                    <p class="text-muted" style="font-size: 1.2em;">
+                        Работай в Португалии комфортно — переписывайся с заказчиками, решай бытовые вопросы и не теряйся в разговоре на митинге. А ещё сможешь флиртовать в кафешке — да-да, тоже на португальском 😉
+                    </p>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="col-md-6">
+                <div class="p-4 border rounded text-center h-100 bg-white">
+                    <img src="./images/family.png" style="width: 286px;" />
+                    <h5 class="mt-3 fw-bold mb-3">Семьям с детьми</h5>
+                    <p class="text-muted" style="font-size: 1.2em;">
+                        Хочешь, чтобы твои дети не чувствовали себя чужими в школе и на площадке? А ты сам понимал, что говорит педиатр? PortuWise поможет адаптироваться всей семье — мягко, весело и эффективно.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="col-md-6">
+                <div class="p-4 border rounded text-center h-100 bg-white">
+                    <img src="./images/university.png" style="width: 310px;" />
+                    <h5 class="mt-3 fw-bold mb-3">Студентам и любителям языков</h5>
+                    <p class="text-muted" style="font-size: 1.2em;">
+                        Если ты просто кайфуешь от языков или планируешь учёбу в Португалии — ты наш человек. PortuWise поможет быстро заговорить и получать удовольствие от процесса. Учёба будет не напряг, а фан!
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="py-5" style="border-radius: 0.4em;">
+<div class="mb-5" style="border-radius: 0.4em;">
     <div class="container">
         <div class="text-center mb-4">
             <h2 class="fw-bold mb-3">Почему PortuWise бесплатный?</h2>
@@ -195,8 +194,8 @@
         <div class="row g-4 text-center">
             <div class="col-md-4">
                 <div class="p-4 border rounded h-100 card card-hover">
-                    <div style="font-size: 4em;">🎓</div>
-                    <h4 class="mt-3">Образование для всех</h4>
+                    <img src="./images/education.png" style="width: 310px;" />
+                    <h4 class="mt-3 fw-bold mb-3">Образование для всех</h4>
                     <p class="text-muted" style="font-size: 1.2em;">
                         Уроки, карточки и фразы — всё бесплатно. Без рекламы и без подписок.
                     </p>
@@ -205,8 +204,8 @@
 
             <div class="col-md-4">
                 <div class="p-4 border rounded h-100 card card-hover">
-                    <div style="font-size: 4em;">💙</div>
-                    <h4 class="mt-3">Проект с душой</h4>
+                    <img src="./images/soul.png" style="width: 310px;" />
+                    <h4 class="mt-3 fw-bold mb-3">Проект с душой</h4>
                     <p class="text-muted" style="font-size: 1.2em;">
                         Мы делаем это для людей, которые, как и мы, учат язык с нуля в новой стране.
                     </p>
@@ -215,8 +214,8 @@
 
             <div class="col-md-4">
                 <div class="p-4 border rounded h-100 card card-hover">
-                    <div style="font-size: 4em;">🚀</div>
-                    <h4 class="mt-3">Развиваемся вместе</h4>
+                    <img src="./images/development.png" style="width: 370px;" />
+                    <h4 class="mt-3 fw-bold mb-3">Развиваемся вместе</h4>
                     <p class="text-muted" style="font-size: 1.2em;">
                         Пока ты учишься — мы улучшаем платформу. Учись в кайф, а всё остальное — на нас.
                     </p>
@@ -226,7 +225,7 @@
     </div>
 </div>
 
-<section class="py-3">
+<section class="mb-5">
     <div class="container">
         <div class="text-center mb-4">
             <h2 class="fw-bold">Хочешь быть в курсе обновлений?</h2>
@@ -250,5 +249,7 @@
         </div>
     </div>
 </section>
+
+<br/>
 
 
