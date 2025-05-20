@@ -1,6 +1,4 @@
-﻿using PortuWise.WebClient.Domain;
-
-namespace PortuWise.WebClient.Domain.Responses
+﻿namespace PortuWise.WebClient.Domain.Responses
 {
     public class GetWordResponse
     {

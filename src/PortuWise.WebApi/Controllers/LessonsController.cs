@@ -21,7 +21,7 @@ namespace PortuWise.WebApi.Controllers
         [HttpGet("{categoryId}")]
         public async Task<IActionResult> Get(Guid categoryId)
         {
-            var lesson = _lessonService.GetLesson(categoryId);
+            var lesson = await _lessonService.GetLesson(categoryId);
             var parentCategory = await _categoryService.GetCategoryByIdAsync(categoryId);
 
             var response = new GetLessonResponse()

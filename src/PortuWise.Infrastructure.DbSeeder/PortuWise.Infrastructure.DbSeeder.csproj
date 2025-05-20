@@ -29,4 +29,13 @@
     <ProjectReference Include="..\PortuWise.Infrastructure\PortuWise.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="portuguese_phrases.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="portuguese_words.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -28,7 +28,6 @@ namespace PortuWise.WebApi.Controllers
             var words = await _wordService.GetWords(categoryId);
             var category = await _categoryService.GetCategoryByIdAsync(categoryId);
 
-
             var response = new GetWordsResponse()
             {
                 CategoryId = categoryId,
@@ -46,7 +45,7 @@ namespace PortuWise.WebApi.Controllers
         {
             var word = await _wordService.GetWord(wordId);
             var category = await _categoryService.GetCategoryByIdAsync(word.CategoryId);
-            var phrases = _phraseService.GetPhrases(wordId);
+            //var phrases = await _phraseService.GetPhrases(wordId);
 
             var response = new GetWordResponse()
             {
@@ -55,7 +54,7 @@ namespace PortuWise.WebApi.Controllers
                 ParentCategoryId = category!.ParentId!.Value,
                 ParentCategoryTitle = category.ParentTitle,
                 Word = word,
-                Phrases = phrases
+                //Phrases = phrases
             };
 
             return Ok(response);

@@ -18,7 +18,7 @@ namespace PortuWise.WebApi
             {
                 options.AddPolicy("BlazorAppPolicy", policy =>
                 {
-                    policy.WithOrigins("https://localhost:7099")
+                    policy.WithOrigins("https://localhost:7099", "http://localhost:5175")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();

@@ -10,5 +10,7 @@
         public string Eng { get;set; } = string.Empty;
         public string EngTranscription{ get;set; } = string.Empty;
         public string Rus { get;set; } = string.Empty;
+
+        public List<Phrase> Phrases { get; set; } = new();
     }
 }

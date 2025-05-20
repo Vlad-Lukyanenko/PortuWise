@@ -167,3 +167,8 @@ code {
     border-top-left-radius: 0.6em !important;
     border-top-right-radius: 0.6em !important;
 }
+
+button:focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+}

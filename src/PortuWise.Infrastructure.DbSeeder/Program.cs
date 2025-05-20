@@ -28,11 +28,12 @@ namespace PortuWise.Infrastructure.DbSeeder
                 var phrasesSeeder = new SeedPhrases(db);
                 var lessonsSeeder = new SeedLessons(db);
 
-                await categoriesSeeder.Seed();
-                await wordsSeeder.Seed();
+                //await wordsSeeder.Seed();
+
+                //await categoriesSeeder.Seed();
                 await phrasesSeeder.Seed();
-                await phrasesSeeder.Seed();
-                await lessonsSeeder.Seed();
+                //await phrasesSeeder.Seed();
+                //await lessonsSeeder.Seed();
             }
         }
     }

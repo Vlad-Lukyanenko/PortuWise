@@ -4,6 +4,6 @@ namespace PortuWise.Application.Services
 {
     public interface ILessonService
     {
-        Lesson GetLesson(Guid categoryId);
+        Task<Lesson?> GetLesson(Guid categoryId);
     }
 }

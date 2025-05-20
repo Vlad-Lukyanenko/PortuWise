@@ -4,6 +4,6 @@ namespace PortuWise.Application.Services
 {
     public interface IPhraseService
     {
-        List<Phrase> GetPhrases(Guid wordId);
+        Task<List<Phrase>> GetPhrases(Guid wordId);
     }
 }

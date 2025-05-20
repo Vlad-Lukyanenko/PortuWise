@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using PortuWise.WebClient.ApiServices;
 using PortuWise.WebClient.Domain.Responses;
+using PortuWise.WebClient.MyComponents;
 
 namespace PortuWise.WebClient.Pages
 {
@@ -21,6 +22,8 @@ namespace PortuWise.WebClient.Pages
         private GetLessonResponse? _lessonResponse = null;
         private GetWordsResponse? _wordsResponse = null;
 
+        //private FlashCard _flashCard = null!;
+
         private RenderFragment _htmlContent => builder =>
         {
             builder.AddMarkupContent(0, _lessonResponse.LessonHtml ?? "");
@@ -32,6 +35,8 @@ namespace PortuWise.WebClient.Pages
             StateHasChanged();
 
             _wordsResponse = await _wordsApiService.GetWordsAsync(SubcategoryId);
+
+            //_flashCard = new FlashCard(_wordsResponse.Words);
         }
     }
 }

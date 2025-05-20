@@ -1,0 +1,272 @@
+﻿@using PortuWise.WebClient.Domain.Enums;
+
+@if (!IsStarted)
+{
+    <div class="container">
+        <h3>📇 Карточки</h3>
+        <hr/>
+        <p class="text-muted mb-4">🎓 Выбери режим и начни тренироваться</p>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+
+            <div class="col">
+                <div class="card card-hover shadow-sm border-0 text-center p-4 mb-4" style="max-width: 350px; margin: auto;">
+                    <div class="card-body">
+                        <div class="mb-3 d-flex justify-content-center">
+                            <img src="./icons/ex-words.png" alt="Слова" style="height: 48px;" />
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Слова</h4>
+                        <p class="card-text text-muted">🚀 Прокачай свой словарный запас</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-outline-primary px-2 py-2 fw-bold"
+                            @onclick="() => StartNew(FlashCardType.WordsPtToRu)">
+                                🇵🇹 ➡️ 🇷🇺
+                            </button>
+
+                            <button class="btn btn-outline-success px-2 py-2 fw-bold"
+                            @onclick="() => StartNew(FlashCardType.WordsRuToPt)">
+                                🇷🇺 ➡️ 🇵🇹
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card card-hover shadow-sm border-0 text-center p-4 mb-4" style="max-width: 350px; margin: auto;">
+                    <div class="card-body">
+                        <div class="mb-3 d-flex justify-content-center">
+                            <img src="./icons/ex-phrases.png" alt="Слова" style="height: 48px;" />
+                        </div>
+                        <h4 class="card-title fw-bold mb-3">Фразы</h4>
+                        <p class="card-text text-muted">🧩 Понимай и говори по-португальски</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-outline-primary px-2 py-2 fw-bold"
+                            @onclick="() => StartNew(FlashCardType.PhrasesPtToRu)">
+                                🇵🇹 ➡️ 🇷🇺
+                            </button>
+
+                            <button class="btn btn-outline-success px-2 py-2 fw-bold"
+                                    @onclick="() => StartNew(FlashCardType.PhrasesRuToPt)">
+                                🇷🇺 ➡️ 🇵🇹
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@if (IsStarted)
+{
+    if (!IsFinished)
+    {
+        if (GameType == FlashCardType.WordsPtToRu)
+        {
+            <div class="d-flex flex-column align-items-center">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Карточки / Слова / 🇵🇹 ➡️ 🇷🇺</h4>
+                    <button class="btn btn-outline-danger ms-3" @onclick="FinishFlashCards">✖</button>
+                </div>
+                <p class="text-muted fw-bold">@NumberOfQuestion / @NumberOfWords</p>
+
+                <div class="card shadow-sm border-0 p-2 mb-4 mt-3" style="max-width: 500px; width: 100%;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6 fw-bold mb-1">@CurrentWord.Pt</h5>
+                        <p class="card-subtitle text-muted mb-3" style="font-size: 1.2em;">/@CurrentWord.PtTranscription/</p>
+                        <p class="card-subtitle text-muted mb-1 fw-bold" style="font-size: 1.2em;">@CurrentWord.Phrases[0].Pt.ToLower()</p>
+                        <p class="card-subtitle text-muted mb-1" style="font-size: 1.2em;">/@CurrentWord.Phrases[0].PtTranscription/</p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                    @foreach (var option in Options)
+                    {
+                        var isSelected = option.Id == SelectedWordOptionId;
+                        var isCorrect = isSelected && IsCorrectWord;
+                        var isWrong = isSelected && !IsCorrectWord;
+
+                        var bgClass = isCorrect ? "bg-success text-white"
+                        : isWrong ? "bg-danger text-white"
+                        : "bg-white";
+
+                        var borderClass = isSelected ? "border-primary border-3"
+                        : "border-secondary";
+
+                        <button class="card card-hover p-3 d-flex flex-column align-items-center justify-content-center @bgClass @borderClass"
+                        style="width: 140px; height: 130px;"
+                        @onclick="() => CheckWordOption(option.Id)">
+                            <img src="@option.ImagePath" alt="" style="height: 60px;" />
+                            <span class="fw-bold mt-2">@option.Rus</span>
+                        </button>
+                    }
+                </div>
+
+                <button class="btn btn-outline-success mb-3" @onclick="NextWord">Дальше</button>
+            </div>
+        }
+        else if (GameType == FlashCardType.WordsRuToPt)
+        {
+            <div class="d-flex flex-column align-items-center">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Карточки / Слова / 🇷🇺 ➡️ 🇵🇹</h4>
+                    <button class="btn btn-outline-danger ms-3" @onclick="FinishFlashCards">✖</button>
+                </div>
+                <p class="text-muted fw-bold">@NumberOfQuestion / @NumberOfWords</p>
+
+                <div class="card shadow-sm border-0 p-2 mb-4" style="max-width: 500px; width: 100%;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6 fw-bold mb-1">@CurrentWord.Rus</h5>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                    @foreach (var option in Options)
+                    {
+                        var isSelected = option.Id == SelectedWordOptionId;
+                        var isCorrect = isSelected && IsCorrectWord;
+                        var isWrong = isSelected && !IsCorrectWord;
+
+                        var bgClass = isCorrect ? "bg-success text-white"
+                        : isWrong ? "bg-danger text-white"
+                        : "bg-white";
+
+                        var borderClass = isSelected ? "border-primary border-3"
+                        : "border-secondary";
+
+                        <button class="card card-hover p-3 d-flex flex-column align-items-center justify-content-center @bgClass @borderClass"
+                        style="width: auto; min-width: 140px; height: 130px;"
+                        @onclick="() => CheckWordOption(option.Id)">
+                            <img src="@option.ImagePath" alt="" style="height: 60px;" />
+                            <span class="fw-bold mt-2">@option.Pt</span>
+                            <span class="mt-0">/@option.PtTranscription/</span>
+                        </button>
+                    }
+                </div>
+
+                <button class="btn btn-outline-success mb-3" @onclick="NextWord">Дальше</button>
+                <button class="btn btn-outline-warning" @onclick="FinishFlashCards">Закончить</button>
+            </div>
+        }
+        else if (GameType == FlashCardType.PhrasesRuToPt)
+        {
+            <div class="d-flex flex-column align-items-center">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Карточки / Фразы / 🇷🇺 ➡️ 🇵🇹</h4>
+                    <button class="btn btn-outline-danger ms-3" @onclick="FinishFlashCards">✖</button>
+                </div>
+                <p class="text-muted fw-bold">@NumberOfQuestion / @NumberOfWords</p>
+
+                <div class="card shadow-sm border-0 p-2 mb-4" style="max-width: 700px; width: 100%;">
+                    <div class="card-body text-center">
+                        <img src="@CurrentWord.ImagePath" alt="" style="height: 60px;" />
+                        <h5 class="card-title display-6 fw-bold mb-1 mt-2">@CurrentPhrase.Rus</h5>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                    @foreach (var option in CurrentWord.Phrases)
+                    {
+                        var isSelected = option.Id == SelectedPhraseOptionId;
+                        var isCorrect = isSelected && IsCorrectPhrase;
+                        var isWrong = isSelected && !IsCorrectPhrase;
+
+                        var bgClass = isCorrect ? "bg-success text-white"
+                        : isWrong ? "bg-danger text-white"
+                        : "bg-white";
+
+                        var borderClass = isSelected ? "border-primary border-3"
+                        : "border-secondary";
+
+                        <button class="card card-hover p-3 pt-2 d-flex flex-column align-items-center justify-content-center @bgClass @borderClass"
+                                style="width: auto; min-width: 140px;"
+                                @onclick="() => CheckPhraseOption(option.Id)">
+                            <span class="fw-bold mt-2">@option.Pt</span>
+                            <span class="mt-0">/@option.PtTranscription/</span>
+                        </button>
+                    }
+                </div>
+
+                <button class="btn btn-outline-success mb-3" @onclick="NextWord">Дальше</button>
+            </div>
+        }
+        else if (GameType == FlashCardType.PhrasesPtToRu)
+        {
+            <div class="d-flex flex-column align-items-center">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="mb-0">Карточки / Фразы / 🇵🇹 ➡️ 🇷🇺</h4>
+                    <button class="btn btn-outline-danger ms-3" @onclick="FinishFlashCards">✖</button>
+                </div>
+                <p class="text-muted fw-bold">@NumberOfQuestion / @NumberOfWords</p>
+
+                <div class="card shadow-sm border-0 p-2 mb-4" style="max-width: 700px; width: 100%;">
+                    <div class="card-body text-center">
+                        <img src="@CurrentWord.ImagePath" alt="" style="height: 60px;" />
+                        <h5 class="card-title display-6 fw-bold mb-1 mt-2">@CurrentPhrase.Pt</h5>
+                        <p class="card-subtitle text-muted mb-2" style="font-size: 1.2em;">/@CurrentPhrase.PtTranscription/</p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                    @foreach (var option in CurrentWord.Phrases)
+                    {
+                        var isSelected = option.Id == SelectedPhraseOptionId;
+                        var isCorrect = isSelected && IsCorrectPhrase;
+                        var isWrong = isSelected && !IsCorrectPhrase;
+
+                        var bgClass = isCorrect ? "bg-success text-white"
+                        : isWrong ? "bg-danger text-white"
+                        : "bg-white";
+
+                        var borderClass = isSelected ? "border-primary border-3"
+                        : "border-secondary";
+
+                        <button class="card card-hover p-3 pt-2 d-flex flex-column align-items-center justify-content-center @bgClass @borderClass"
+                                style="width: auto; min-width: 140px;"
+                                @onclick="() => CheckPhraseOption(option.Id)">
+                            <span class="fw-bold mt-2">@option.Rus</span>
+                        </button>
+                    }
+                </div>
+
+                <button class="btn btn-outline-success mb-3" @onclick="NextWord">Дальше</button>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="card shadow-sm border-0 text-center p-4 mt-5" style="max-width: 500px; margin: auto;">
+            <div class="card-body">
+                <h4 class="card-title fw-bold text-success mb-3">✅ Упражнение завершено</h4>
+
+                <div class="mb-3">
+                    <p class="mb-1 fw-semibold text-secondary">Количество вопросов:</p>
+                    <h5 class="fw-bold">@NumberOfWords</h5>
+                </div>
+
+                <div class="mb-3">
+                    <p class="mb-1 fw-semibold text-secondary">Правильных ответов:</p>
+                    <h5 class="fw-bold text-success">@(NumberOfWords - NumberOfMistakes)</h5>
+                </div>
+
+                <div>
+                    <p class="mb-1 fw-semibold text-secondary">Ошибок:</p>
+                    <h5 class="fw-bold text-danger">@NumberOfMistakes</h5>
+                </div>
+
+                <button class="btn btn-primary px-4 py-2 mt-4 fw-bold" @onclick="() => StartNew(GameType)">
+                    🚀 Старт
+                </button>
+                <br />
+                <button class="btn btn-outline-secondary px-4 py-2 mt-4 fw-bold" @onclick="GoBack">
+                    К списку упражнений
+                </button>
+            </div>
+        </div>
+    }
+}

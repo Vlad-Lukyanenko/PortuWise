@@ -1,4 +1,6 @@
 ﻿@page "/learn/category/{categoryId:guid}/subcategory/{subcategoryId:guid}/lesson"
+@using PortuWise.WebClient.Domain.Enums;
+@using PortuWise.WebClient.MyComponents;
 
 <div class="row g-4">
     @if (_wordsResponse is not null)
@@ -18,6 +20,9 @@
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#theory">Теория</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#practice">Практика</a>
+            </li>
         </ul>
 
         <div class="tab-content">
@@ -26,26 +31,134 @@
                     @foreach (var w in _wordsResponse.Words)
                     {
                         <div class="col-sm-6 col-md-4 col-lg-2">
-                            <div class="card card-hover h-100">
+                            <div class="card card-hover">
                                 <a href="/learn/category/@_wordsResponse.ParentCategoryId/subcategory/@w.CategoryId/lesson/words/@w.Id" class="text-decoration-none text-dark">
-                                    <div class="card h-100 shadow-sm">
-                                        <img src="@w.ImagePath" style="width: 64px; margin: auto; padding-top: 0.5em;" class="card-img-top">
-                                        <div class="card-body text-center">
+                                    <div class="card shadow-sm d-flex flex-column align-items-center justify-content-between pt-3">
+
+                                        <div class="d-flex align-items-center justify-content-center" style="height: 80px;">
+                                            <img src="@w.ImagePath" class="card-img-top" style="width: 72px;">
+                                        </div>
+
+                                        <div class="card-body text-center d-flex flex-column justify-content-center" style="min-height: 50px;">
                                             <h6 class="card-title fw-bold mb-0 mt-0">@w.Pt</h6>
                                             <p class="card-title mt-0">@w.PtTranscription</p>
-                                            <h6 class="card-title fw-bold mt-3 mb-0">@w.Rus</h6>
+                                            <h6 class="card-title fw-bold mt-1 mb-0" style="color: #2a5eb5">[ @w.Rus ]</h6>
                                         </div>
+
                                     </div>
                                 </a>
                             </div>
                         </div>
+
                     }
                 </div>
             </div>
             <div class="tab-pane fade" id="theory">
-                <div class="p-0 m-0" style="margin-top: -4em !important; padding-top: 0 !important; margin-left: -2em !important">
-                    @_htmlContent
+                <div class="p-0 m-0" style="padding-top: 0 !important; padding-left: 4em; font-size: 1.2em;">
+                    @* @_htmlContent *@
+                    <h3>🇵🇹:</h3>
+                    <p>
+                        A minha casa é pequena, mas bonita.<br>
+                        Tem uma sala, uma cozinha, um quarto e uma casa de banho.<br>
+                        Na sala, há um sofá, uma televisão e uma mesa.<br>
+                        No quarto, tenho uma cama e um roupeiro.<br>
+                        Gosto muito da minha casa.
+                    </p>
+
+                    <h3>🇷🇺:</h3>
+                    <p>
+                        Мой дом маленький, но красивый.<br>
+                        В нём есть гостиная, кухня, комната и ванная.<br>
+                        В гостиной есть диван, телевизор и стол.<br>
+                        В комнате у меня есть кровать и шкаф.<br>
+                        Мне очень нравится мой дом.
+                    </p>
+
+                    <h3 class="mt-5">🧠 Детальный разбор:</h3>
+
+                    <h4 class="mt-4">🏡 <strong>1. A minha casa é pequena, mas bonita.</strong></h4>
+                    <p><strong>→ Мой дом маленький, но красивый.</strong></p>
+                    <ul>
+                        <li><strong>A</strong> — определённый артикль (ж.р., ед.ч.) → "the"</li>
+                        <li><strong>minha</strong> — притяжательное местоимение, ж.р., ед.ч. → "моя"</li>
+                        <li><strong>casa</strong> — существительное, ж.р., ед.ч. → "дом"</li>
+                        <li><strong>é</strong> — глагол "ser" в 3-м лице ед.ч. → "является"</li>
+                        <li><strong>pequena</strong> — прилагательное "маленькая" (ж.р. к "casa")</li>
+                        <li><strong>mas</strong> — союз → "но"</li>
+                        <li><strong>bonita</strong> — прилагательное "красивая" (ж.р. к "casa")</li>
+                    </ul>
+                    <p>👉 Здесь два прилагательных описывают "casa", и они стоят в <strong>женском роде</strong>, потому что "casa" — женского рода.</p>
+
+                    <h4 class="mt-4">🛋️ <strong>2. Tem uma sala, uma cozinha, um quarto e uma casa de banho.</strong></h4>
+                    <p><strong>→ В нём есть гостиная, кухня, комната и ванная.</strong></p>
+                    <ul>
+                        <li><strong>Tem</strong> — глагол "ter" в 3-м лице ед.ч. → "имеет / есть у него"</li>
+                        <li><strong>uma sala</strong> — одна гостиная (ж.р.)</li>
+                        <li><strong>uma cozinha</strong> — одна кухня (ж.р.)</li>
+                        <li><strong>um quarto</strong> — одна комната / спальня (м.р.)</li>
+                        <li><strong>uma casa de banho</strong> — ванная комната (буквально: "дом для бани") — ж.р.</li>
+                    </ul>
+                    <p>👉 Глагол <strong>tem</strong> не требует подлежащего, потому что это <strong>неопределённое описание</strong> (как "у него есть").</p>
+
+                    <h4 class="mt-4">📺 <strong>3. Na sala, há um sofá, uma televisão e uma mesa.</strong></h4>
+                    <p><strong>→ В гостиной есть диван, телевизор и стол.</strong></p>
+                    <ul>
+                        <li><strong>Na</strong> = em + a → "в" + артикль ж.р. → "в (гостиной)"</li>
+                        <li><strong>sala</strong> — "гостиная"</li>
+                        <li><strong>há</strong> — глагол "haver" → "есть / имеется"</li>
+                        <li><strong>um sofá</strong> — диван (м.р.)</li>
+                        <li><strong>uma televisão</strong> — телевизор (ж.р.)</li>
+                        <li><strong>uma mesa</strong> — стол (ж.р.)</li>
+                    </ul>
+                    <p>👉 Глагол <strong>há</strong> используется как "there is / there are" — универсальный способ сказать, что <strong>что-то существует в каком-то месте</strong>.</p>
+
+                    <h4 class="mt-4">🛏️ <strong>4. No quarto, tenho uma cama e um roupeiro.</strong></h4>
+                    <p><strong>→ В комнате у меня есть кровать и шкаф.</strong></p>
+                    <ul>
+                        <li><strong>No</strong> = em + o → "в (комнате)"</li>
+                        <li><strong>quarto</strong> — комната / спальня (м.р.)</li>
+                        <li><strong>tenho</strong> — глагол "ter" в 1-м лице ед.ч. → "у меня есть"</li>
+                        <li><strong>uma cama</strong> — кровать (ж.р.)</li>
+                        <li><strong>um roupeiro</strong> — шкаф (м.р.)</li>
+                    </ul>
+                    <p>👉 Разница между <strong>há</strong> и <strong>tenho</strong>:</p>
+                    <ul>
+                        <li><strong>há</strong> — "где-то что-то есть"</li>
+                        <li><strong>tenho</strong> — "у меня есть"</li>
+                    </ul>
+
+                    <h4 class="mt-4">❤️ <strong>5. Gosto muito da minha casa.</strong></h4>
+                    <p><strong>→ Мне очень нравится мой дом.</strong></p>
+                    <ul>
+                        <li><strong>Gosto</strong> — глагол "gostar" в 1-м лице ед.ч. → "я люблю / мне нравится"</li>
+                        <li><strong>muito</strong> — "очень"</li>
+                        <li><strong>da</strong> = de + a → "о" + артикль ж.р. → "о моей"</li>
+                        <li><strong>minha casa</strong> — мой дом</li>
+                    </ul>
+                    <p>
+                        👉 В португальском языке глагол
+                        <strong>"gostar"</strong> всегда используется с предлогом
+                        <strong>"de"</strong>, то есть буквально: <em>
+                            "нравиться что-то" → "gostar
+                            <strong>de</strong> algo"
+                        </em>.
+                    </p> <p>
+                        Если дальше идёт существительное с артиклем, как в случае
+                        <em>“a minha casa”</em> (мой дом), предлог <strong>de</strong> и артикль
+                        <strong>a</strong> сливаются в <strong>da</strong>:
+                    </p> <ul>
+                        <li><em>gosto de casa</em> — мне нравится (какой-то) дом</li>
+                        <li><em>gosto da minha casa</em> — мне нравится <strong>мой</strong> дом</li>
+                    </ul>
+                    <p>
+                        ✅ Так что правильно будет: <strong>gosto da minha casa</strong>,
+                        а не <em>gosto minha casa</em> или <em>gosto de a minha casa</em>.
+                    </p>
+
                 </div>
+            </div>
+            <div class="tab-pane fade" id="practice">
+                <FlashCard Words="@_wordsResponse.Words" />
             </div>
         </div>
     }
